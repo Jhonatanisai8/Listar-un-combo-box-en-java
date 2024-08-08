@@ -210,7 +210,7 @@ public class frmComoboAninadoEjemploVideo extends javax.swing.JFrame {
     }
 
     private void llenarComboxCiudad(int idPais) {
-        pais.setNombre("=Seleccionar=");
+        ciudad.setNombre("=Seleccionar=");
         cbxCiudad.addItem(ciudad);
         ciudadDao.mostrarPais(cbxCiudad, idPais);
     }
