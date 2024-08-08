@@ -92,7 +92,7 @@ public class Pais implements Serializable {
 
     @Override
     public String toString() {
-        return "com.Jhonatan.comboboxanidados.ejemplopaisciudad.Persistencia.Pais[ idPais=" + idPais + " ]";
+        return nombre;
     }
 
 }

@@ -1,4 +1,3 @@
-
 package com.Jhonatan.comboboxanidados.ejemplopaisciudad.Persistencia;
 
 import java.io.Serializable;
@@ -93,7 +92,7 @@ public class Ciudad implements Serializable {
 
     @Override
     public String toString() {
-        return "com.Jhonatan.comboboxanidados.ejemplopaisciudad.Persistencia.Ciudad[ idCiudad=" + idCiudad + " ]";
+        return nombre;
     }
-    
+
 }
