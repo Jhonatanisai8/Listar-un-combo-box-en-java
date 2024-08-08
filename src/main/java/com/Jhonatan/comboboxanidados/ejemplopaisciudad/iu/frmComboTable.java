@@ -19,7 +19,6 @@ public class frmComboTable extends javax.swing.JFrame {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
         this.setLocationRelativeTo(null);
-        //lblMensaje.setVisible(false);
         this.llenarComboxPais();
     }
 
@@ -47,7 +46,7 @@ public class frmComboTable extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(204, 0, 0));
         jPanel2.setForeground(new java.awt.Color(0, 0, 102));
 
-        cbxPais.setFont(new java.awt.Font("Shruti", 0, 15)); // NOI18N
+        cbxPais.setFont(new java.awt.Font("Simplified Arabic Fixed", 0, 17)); // NOI18N
         cbxPais.setForeground(new java.awt.Color(0, 0, 153));
         cbxPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,18 +54,17 @@ public class frmComboTable extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Simplified Arabic Fixed", 0, 17)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 153));
         jLabel1.setText("Pais");
 
+        tblCiudades.setFont(new java.awt.Font("OCR A Extended", 0, 17)); // NOI18N
         tblCiudades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID CIUDAD", "CIUDAD"
             }
         ));
         jScrollPane1.setViewportView(tblCiudades);
@@ -94,7 +92,7 @@ public class frmComboTable extends javax.swing.JFrame {
                     .addComponent(cbxPais, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addGap(16, 16, 16))
         );
 
@@ -128,14 +126,14 @@ public class frmComboTable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbxPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPaisActionPerformed
-//        if (cbxPais.getSelectedIndex() > 0) {
-//            cbxCiudad.removeAllItems();
-//            int idPais;
-//            idPais = cbxPais.getItemAt(cbxPais.getSelectedIndex()).getIdPais();
-//            llenarComboxCiudad(idPais);
-//        } else {
-//            cbxCiudad.removeAllItems();
-//        }
+        if (cbxPais.getSelectedIndex() > 0) {
+            tblCiudades.removeAll();
+            int idPais;
+            idPais = cbxPais.getItemAt(cbxPais.getSelectedIndex()).getIdPais();
+            this.llenarTablaCiudads(idPais);
+        } else {
+            tblCiudades.removeAll();
+        }
     }//GEN-LAST:event_cbxPaisActionPerformed
 
     public static void main(String args[]) {
@@ -165,11 +163,9 @@ public class frmComboTable extends javax.swing.JFrame {
         cbxPais.addItem(pais);
         paisDao.mostrarPais(cbxPais);
     }
-//
-//    private void llenarComboxCiudad(int idPais) {
-//        ciudad.setNombre("=Seleccionar=");
-//        cbxCiudad.addItem(ciudad);
-//        ciudadDao.mostrarPais(cbxCiudad, idPais);
-//    }
+
+    private void llenarTablaCiudads(int idPais) {
+        ciudadDao.listarCiudad(tblCiudades, idPais);
+    }
 
 }
