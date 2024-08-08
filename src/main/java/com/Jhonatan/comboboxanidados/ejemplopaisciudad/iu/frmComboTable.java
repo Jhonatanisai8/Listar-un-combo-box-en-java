@@ -5,23 +5,24 @@ import com.Jhonatan.comboboxanidados.ejemplopaisciudad.Logica.PaisDao;
 import com.Jhonatan.comboboxanidados.ejemplopaisciudad.Persistencia.Ciudad;
 import com.Jhonatan.comboboxanidados.ejemplopaisciudad.Persistencia.Pais;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import javax.swing.table.DefaultTableModel;
 
 public class frmComboTable extends javax.swing.JFrame {
-
+    
     private PaisDao paisDao = new PaisDao();
     private CiudadDao ciudadDao = new CiudadDao();
 
     /*VARIAABLES NECESARIAS*/
     private Pais pais = new Pais();
     private Ciudad ciudad = new Ciudad();
-
+    
     public frmComboTable() {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
         this.setLocationRelativeTo(null);
         this.llenarComboxPais();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -126,6 +127,7 @@ public class frmComboTable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbxPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPaisActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tblCiudades.getModel();
         if (cbxPais.getSelectedIndex() > 0) {
             tblCiudades.removeAll();
             int idPais;
@@ -133,9 +135,10 @@ public class frmComboTable extends javax.swing.JFrame {
             this.llenarTablaCiudads(idPais);
         } else {
             tblCiudades.removeAll();
+            model.setRowCount(0);
         }
     }//GEN-LAST:event_cbxPaisActionPerformed
-
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         FlatMaterialLighterIJTheme.setup();
@@ -163,9 +166,9 @@ public class frmComboTable extends javax.swing.JFrame {
         cbxPais.addItem(pais);
         paisDao.mostrarPais(cbxPais);
     }
-
+    
     private void llenarTablaCiudads(int idPais) {
         ciudadDao.listarCiudad(tblCiudades, idPais);
     }
-
+    
 }
