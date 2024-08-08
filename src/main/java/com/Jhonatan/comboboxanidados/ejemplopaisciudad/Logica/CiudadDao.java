@@ -13,11 +13,12 @@ public class CiudadDao {
 
     public void mostrarPais(JComboBox<Ciudad> cbxCiudad, int idPais) {
         EntityManager em = ciudadJpaController.getEntityManager();
-        Query query = em.createQuery("SELECT c FROM Ciudad c JOIN  c.idPais p  WHERE p.idPais = : idPais ");
-        query.setParameter("idPais", idPais);
-        Iterator it = query.getResultList().iterator();
-        Ciudad c = null;
         try {
+            Query query = em.createQuery("SELECT c FROM Ciudad c JOIN  c.idPais p  WHERE p.idPais = :idPais ");
+            query.setParameter("idPais", idPais);
+            Iterator it = query.getResultList().iterator();
+            Ciudad c = null;
+
             while (it.hasNext()) {
                 c = (Ciudad) it.next();
                 cbxCiudad.addItem(c);
