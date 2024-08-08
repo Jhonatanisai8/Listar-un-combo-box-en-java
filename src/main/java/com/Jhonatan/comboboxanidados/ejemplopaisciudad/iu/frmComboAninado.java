@@ -7,18 +7,18 @@ import com.Jhonatan.comboboxanidados.ejemplopaisciudad.Persistencia.Pais;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 
 public class frmComboAninado extends javax.swing.JFrame {
-    
+
     private PaisDao paisDao = new PaisDao();
     private CiudadDao ciudadDao = new CiudadDao();
-    
+
     public frmComboAninado() {
         initComponents();
         FlatMaterialLighterIJTheme.setup();
         this.setLocationRelativeTo(null);
-       // lblMensaje.setVisible(false);
+        // lblMensaje.setVisible(false);
         this.cargarCbxPais();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -149,16 +149,17 @@ public class frmComboAninado extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxPaisActionPerformed
 
     private void cbxCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCiudadActionPerformed
-        int idCiudad = cbxCiudad.getSelectedIndex() + 1;
+        //
         String ciudad = cbxCiudad.getSelectedItem().toString();
-        
-        lblMensaje.setText("Ciudad: " + ciudad + " Id: " + idCiudad);
+        System.out.println(ciudad);
+        int idCiudad = cbxCiudad.getSelectedIndex() + 1;
+        System.out.println(idCiudad);
     }//GEN-LAST:event_cbxCiudadActionPerformed
 
     private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
         //this.mostrarCiudadorItemSelecionado();
     }//GEN-LAST:event_btnCargarActionPerformed
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         FlatMaterialLighterIJTheme.setup();
@@ -186,13 +187,14 @@ public class frmComboAninado extends javax.swing.JFrame {
     private void cargarCbxPais() {
         paisDao.mostrarPais(cbxPais);
     }
-    
+
     private void cargarCbxCiudad(int idPais) {
         cbxCiudad.removeAllItems();
         ciudadDao.mostrarPais(cbxCiudad, idPais);
     }
-    
+
     private int mostrarCiudadorItemSelecionado() {
+        lblMensaje.setText("Pais: " + cbxPais.getSelectedItem().toString() + " ID: " + (cbxPais.getSelectedIndex() + 1));
         return cbxPais.getSelectedIndex() + 1;
     }
 }
